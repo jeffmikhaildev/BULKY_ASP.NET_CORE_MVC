@@ -3,6 +3,12 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "timeOut": "2000",
+            "positionClass": "toast-top-right"
+        };
         toastr.success('@TempData["success"]');
     </script>
     
@@ -18,6 +24,12 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "timeOut": "2000",
+            "positionClass": "toast-top-right"
+        };
         toastr.success('@TempData["error"]');
     </script>
 
