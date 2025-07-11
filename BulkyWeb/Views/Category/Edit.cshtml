@@ -1,36 +1,47 @@
 ﻿@model Category
 
-<form method="post">
+@{
+    ViewData["Title"] = "Edit Category";
+}
 
+
+<form method="post">
+    <!-- Preserve ID on post -->
     <input type="hidden" asp-for="Id" />
 
     <div class="border border-black p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary p-0">Edit Category</h2>
+            <h2 class="text-primary p-0 text-center mb-3">Edit Category</h2>
             <hr />
         </div>
 
-        @* <div asp-validation-summary="ModelOnly"></div> *@
-
-        <div class="mb-3 row">
-            <label asp-for="Name" class="p-0"></label>
-            <input asp-for="Name" name="Name" class="form-control" placeholder="Enter Category Name" style="outline: none; box-shadow: none; border-color: #ced4da;" />
-            <span asp-validation-for="Name" class="text-danger p-0"></span>
+        <!-- Optional: Display disabled ID field -->
+        <div class="form-floating mb-4" style="margin-left: -10px;">
+            <input asp-for="Id" class="form-control rounded shadow-sm bg-transparent" disabled
+                   style="border-color: #ced4da;" />
+            <label asp-for="Id">ID</label>
         </div>
 
-        <div class="mb-3 row">
-            <label asp-for="DisplayOrder" class="p-0"></label>
-            <input asp-for="DisplayOrder" name="DisplayOrder" class="form-control" placeholder="Enter Display Order" style="outline: none; box-shadow: none; border-color: #ced4da;" />
-            <span asp-validation-for="DisplayOrder" class="text-danger p-0"></span>
+        <!-- Floating Category Name -->
+        <div class="form-floating mb-4" style="margin-left: -10px;">
+            <input asp-for="Name" name="Name" class="form-control rounded shadow-sm bg-transparent"
+                   style="border-color: #ced4da;" />
+            <label asp-for="Name">Category Name</label>
+            <span asp-validation-for="Name" class="text-danger small"></span>
         </div>
 
-        <div class="row mt-4 gap-4">
-            <div class="col-6 col-md-3 p-0">
-                <button type="submit" class="btn btn-primary rounded form-control">Update</button>
-            </div>
-            <div class="col-6 col-md-3 p-0">
-                <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary rounded form-control">Back To List</a>
-            </div>
+        <!-- Floating Display Order -->
+        <div class="form-floating mb-4" style="margin-left: -10px;">
+            <input asp-for="DisplayOrder" name="DisplayOrder" class="form-control rounded shadow-sm bg-transparent"
+                   style="border-color: #ced4da;" />
+            <label asp-for="DisplayOrder">Display Order</label>
+            <span asp-validation-for="DisplayOrder" class="text-danger small"></span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex flex-wrap gap-3">
+            <button type="submit" class="btn btn-primary rounded px-4">Update</button>
+            <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary rounded px-4">Back To List</a>
         </div>
     </div>
 </form>
