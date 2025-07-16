@@ -1,23 +1,23 @@
-﻿using Bulky.DataAccess;
-using Bulky.DataAccess.Data;
-using Bulky.DataAccess.Repository.Irepository;
-using Bulky.Models;
+﻿using BulkyBook.DataAccess;
+using BulkyBook.DataAccess.Data;
+using BulkyBook.DataAccess.Repository.Irepository;
+using BulkyBook.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BulkyWeb.Controllers
+namespace BulkyBookWeb.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ICategoryRepository _categoryRepo;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(ICategoryRepository db)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _categoryRepo = db;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _categoryRepo.GetAll().ToList();
+            List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
 
             return View(objCategoryList);
         }
@@ -36,8 +36,8 @@ namespace BulkyWeb.Controllers
             }
 
             if (ModelState.IsValid) {
-                _categoryRepo.Add(obj);
-                _categoryRepo.Save();
+                _unitOfWork.Category.Add(obj);
+                _unitOfWork.Save();
 
                 TempData["success"] = "Category created successfully";
 
@@ -55,7 +55,7 @@ namespace BulkyWeb.Controllers
                 return NotFound();
             }
 
-            Category? categoryFromDb = _categoryRepo.Get(u => u.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
 
             // Alternative way to find the category using LINQ
             //Category? category2 = _db.Categories.FirstOrDefault(u => u.Id == id);
@@ -76,8 +76,8 @@ namespace BulkyWeb.Controllers
 
             if (ModelState.IsValid)
             {
-                _categoryRepo.Update(obj);
-                _categoryRepo.Save();
+                _unitOfWork.Category.Update(obj);
+                _unitOfWork.Save();
 
                 TempData["success"] = "Category updated successfully";
 
@@ -95,7 +95,7 @@ namespace BulkyWeb.Controllers
                 return NotFound();
             }
 
-            Category? category1 = _categoryRepo.Get(u => u.Id == id);
+            Category? category1 = _unitOfWork.Category.Get(u => u.Id == id);
 
             // Alternative way to find the category using LINQ
             //Category? category2 = _db.Categories.FirstOrDefault(u => u.Id == id);
@@ -114,15 +114,15 @@ namespace BulkyWeb.Controllers
         [ActionName("Delete")] // This is to specify that this method is for the Delete action
         public IActionResult DeletePOST(int? id)
         {
-            Category? obj = _categoryRepo.Get(u => u.Id == id);
+            Category? obj = _unitOfWork.Category.Get(u => u.Id == id);
 
             if (obj == null)
             {
                 return NotFound();
             }
 
-            _categoryRepo.Remove(obj);
-            _categoryRepo.Save();
+            _unitOfWork.Category.Remove(obj);
+            _unitOfWork.Save();
 
             TempData["success"] = "Category deleted successfully";
 
