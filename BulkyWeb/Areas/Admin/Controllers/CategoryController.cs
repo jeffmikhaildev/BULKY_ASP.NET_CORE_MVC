@@ -45,7 +45,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Category");
             }
 
-            return View();
+            return View(obj);
         }
 
         // *** EDIT CATEGORY ***

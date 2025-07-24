@@ -15,26 +15,19 @@
             <hr />
         </div>
 
-        <!-- Optional: Display disabled ID field -->
-        <div class="form-floating mb-4" style="margin-left: -10px;">
-            <input asp-for="Id" class="form-control rounded shadow-sm bg-transparent" disabled
-                   style="border-color: #ced4da;" />
-            <label asp-for="Id">ID</label>
-        </div>
+        <input asp-for="Id" hidden />
 
-        <!-- Floating Category Name -->
-        <div class="form-floating mb-4" style="margin-left: -10px;">
+        <div class="form mb-4" style="margin-left: -10px;">
+            <label asp-for="Name">Category Name</label>
             <input asp-for="Name" name="Name" class="form-control rounded shadow-sm bg-transparent"
                    style="border-color: #ced4da;" />
-            <label asp-for="Name">Category Name</label>
             <span asp-validation-for="Name" class="text-danger small"></span>
         </div>
 
-        <!-- Floating Display Order -->
-        <div class="form-floating mb-4" style="margin-left: -10px;">
+        <div class="form- mb-4" style="margin-left: -10px;">
+            <label asp-for="DisplayOrder">Display Order</label>
             <input asp-for="DisplayOrder" name="DisplayOrder" class="form-control rounded shadow-sm bg-transparent"
                    style="border-color: #ced4da;" />
-            <label asp-for="DisplayOrder">Display Order</label>
             <span asp-validation-for="DisplayOrder" class="text-danger small"></span>
         </div>
 

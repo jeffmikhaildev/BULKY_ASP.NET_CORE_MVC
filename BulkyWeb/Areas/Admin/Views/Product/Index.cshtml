@@ -1,0 +1,59 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = "Product";
+}
+
+
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-end pt-4 pb-3">
+        <div class="">
+            <h2 class="text-primary">Product List</h2>
+        </div>
+        <div class="">
+            <a asp-controller="Product" asp-action="Upsert" class="btn btn-primary rounded">
+                <i class="bi bi-plus-circle"></i> Add
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-dark table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>ISBN</th>
+                <th>Price</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <th>@obj.Title</th>
+                    <th>@obj.ISBN</th>
+                    <th>@obj.Price</th>
+                    <th>@obj.Author</th>
+                    <th>@obj.Category.Name</th>
+                    <td class="text-center">
+                        <div class="btn-group" role="group">
+                            <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id"
+                               class="btn btn-primary mx-1 py-1 px-2 fs-6 rounded">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id"
+                               class="btn btn-danger mx-1 py-1 px-2 fs-6 rounded">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>

@@ -15,25 +15,18 @@
             <hr />
         </div>
 
-        <!-- ID (disabled floating field) -->
-        <div class="form-floating mb-4" style="margin-left: -10px;">
-            <input asp-for="Id" class="form-control rounded shadow-sm bg-transparent" disabled
-                   style="border-color: #ced4da;" />
-            <label asp-for="Id">ID</label>
-        </div>
+        <input asp-for="Id" hidden />
 
-        <!-- Name (disabled floating field) -->
-        <div class="form-floating mb-4" style="margin-left: -10px;">
+        <div class="form mb-4" style="margin-left: -10px;">
+            <label asp-for="Name">Category Name</label>
             <input asp-for="Name" class="form-control rounded shadow-sm bg-transparent" disabled
                    placeholder="Enter Category Name" style="border-color: #ced4da;" />
-            <label asp-for="Name">Category Name</label>
         </div>
 
-        <!-- DisplayOrder (disabled floating field) -->
-        <div class="form-floating mb-4" style="margin-left: -10px;">
+        <div class="form mb-4" style="margin-left: -10px;">
+            <label asp-for="DisplayOrder">Display Order</label>
             <input asp-for="DisplayOrder" class="form-control rounded shadow-sm bg-transparent" disabled
                    placeholder="Enter Display Order" style="border-color: #ced4da;" />
-            <label asp-for="DisplayOrder">Display Order</label>
         </div>
 
         <!-- Action buttons -->
